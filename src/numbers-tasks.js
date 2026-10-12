@@ -466,11 +466,7 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  // return parseFloat(str);
-  // const match = str.match(/^[+-]?(\d+(\.\d*)?|\.\d+)/);
-  // return match ? parseFloat(match[0]) : NaN;
-
-  const num = parseFloat(str);
+  const num = Number.parseFloat(str);
   return Number.isNaN(num) ? NaN : num;
 }
 
@@ -489,9 +485,7 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  // return parseInt(str, base);
-  const num = parseInt(str, base);
-  return Number.isNaN(num) ? NaN : num;
+  return Number.parseInt(str, base);
 }
 
 /**
@@ -580,7 +574,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  return Number((x1 + x2 + x3).toFixed(10));
 }
 
 /**
@@ -643,13 +637,7 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  let count = 0;
-  for (let i = 0; i <= number; i += 1) {
-    if (i % 2 !== 0) {
-      count += 1;
-    }
-  }
-  return count;
+  return Math.ceil(Math.abs(number) / 2);
 }
 
 module.exports = {
